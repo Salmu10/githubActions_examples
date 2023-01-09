@@ -1,0 +1,14 @@
+name: envio_mensaje
+on:
+  push:
+    branches:
+      - "send_telegram_action"
+jobs:
+  send_message:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - uses: ./
+        env:
+          TELEGRAM_TOKEN: ${{secrets.TELEGRAM_TOKEN}}
+          TELEGRAM_CHAT: ${{secrets.TELEGRAM_USR_ID}}
