@@ -13,7 +13,7 @@ async function main() {
 
         const old_readme = await fs.readFile('./README_template.md', 'utf8');
         const new_readme = old_readme + `<img src="${URL}" />`;
-
+        
         await fs.writeFile('./README.md', new_readme);
         process.exit(0);
     } catch (error) {
