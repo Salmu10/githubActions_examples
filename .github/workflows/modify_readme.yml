@@ -1,0 +1,31 @@
+name: modify_readme
+on: 
+  push:
+   branches:
+    - github_action_readme
+jobs:
+  test-job:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+      - name: Run tests
+        run: npm install jest && npm test
+        working-directory: ./test
+  modify-job:
+    runs-on: ubuntu-latest
+    needs: test-job
+    steps:
+      - uses: actions/checkout@v2
+      - uses: ./actions/memeReadme
+        with:
+          frase_positiva: "Los test funcionaron correctamente!"
+          frase_negativa: "Oh no! Los tests no funcionan bien"
+          resultado_tests: ${{ needs.jest.result }}
+      - uses: EndBug/add-and-commit@v9
+        with:
+          add: "."
+          author_name: "Salva Muñoz Úbeda"
+          author_email: "ubedasalmu@gmail.com"
+          message: "Meme updated"
+          push: true
