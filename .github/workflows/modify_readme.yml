@@ -17,7 +17,7 @@ jobs:
     needs: test-job
     steps:
       - uses: actions/checkout@v2
-      - uses: ./actions/memeReadme
+      - uses: ./.github/actions/memeReadme
         with:
           frase_positiva: "Los test funcionaron correctamente!"
           frase_negativa: "Oh no! Los tests no funcionan bien"
