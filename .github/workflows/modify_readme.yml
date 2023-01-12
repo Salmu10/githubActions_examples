@@ -21,7 +21,7 @@ jobs:
         with:
           frase_positiva: "Los test funcionaron correctamente!"
           frase_negativa: "Oh no! Los tests no funcionan bien"
-          resultado_tests: ${{ needs.jest.result }}
+          resultado_tests: ${{ needs.test-job.result }}
       - uses: EndBug/add-and-commit@v9
         with:
           add: "."
