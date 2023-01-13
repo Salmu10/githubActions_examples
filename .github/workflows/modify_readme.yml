@@ -14,6 +14,7 @@ jobs:
         working-directory: ./test
   modify-job:
     runs-on: ubuntu-latest
+    if: always()
     needs: test-job
     steps:
       - uses: actions/checkout@v2
